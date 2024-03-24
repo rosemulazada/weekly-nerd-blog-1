@@ -6,7 +6,7 @@ const express = require("express");
 const ejs = require("ejs");
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
