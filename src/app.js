@@ -34,7 +34,25 @@ app.get("", (req, res) => {
 /**======================
  *          404
  *=======================**/
-// TODO: 404
+// TODO: 404: How to make useful?
+
+app.get("/findings/*", (req, res) => {
+    res.send(`The posts you're looking for could not be found.`);
+});
+
+app.get("/articles/*", (req, res) => {
+    res.send(`The articles you're looking for could not be found.`);
+});
+
+app.get("/weeklynerd/*", (req, res) => {
+    res.send(`The weekly nerd you're looking for could not be found.`);
+});
+
+app.get("*", (req, res) => {
+    res.send(`The page you're looking for could not be found.`);
+});
+
+// TODO: localStorage
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);
