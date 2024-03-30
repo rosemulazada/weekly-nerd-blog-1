@@ -1,5 +1,6 @@
 // Core modules
 const path = require("path");
+const fs = require("fs");
 
 // NPM modules
 const express = require("express");
@@ -12,7 +13,7 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
 
-// Setup handlebars engine and views location
+// Setup EJS engine and views location
 app.set("view engine", "ejs");
 app.set("views", viewsPath);
 
@@ -31,16 +32,28 @@ app.get("", (req, res) => {
     res.render("index");
 });
 
+app.get("/weeklynerd", (req, res) => {
+    res.render("weeklynerd");
+});
+
+app.get("/posts", (req, res) => {
+    res.render("posts");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
 /**======================
  *          404
  *=======================**/
 // TODO: 404: How to make useful?
+// TODO: Look at res.status;
 
-app.get("/findings/*", (req, res) => {
+app.get("/posts/*", (req, res) => {
     res.send(`The posts you're looking for could not be found.`);
 });
 
-app.get("/articles/*", (req, res) => {
+app.get("/about/*", (req, res) => {
     res.send(`The articles you're looking for could not be found.`);
 });
 
